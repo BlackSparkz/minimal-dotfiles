@@ -23,6 +23,7 @@ mangowm
 mpv
 neovim
 nwg-look
+playerctl
 foot
 slurp
 swaybg
