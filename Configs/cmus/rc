@@ -1,0 +1,19 @@
+# ====================== KEYBINDS ======================
+
+# Playback Controls
+bind -f common x player-prev
+bind -f common c player-pause
+bind -f common v player-next
+
+bind -f common b seek +10
+bind -f common z seek -10
+bind -f common right seek +10
+bind -f common left seek -10
+bind -f common R toggle repeat_current
+bind -f common l win-next
+bind -f common h win-next
+bind -f common n win-add-Q
+bind -f common d win-remove
+
+set start_view=sorted
+set lib_sort=-filemtime
