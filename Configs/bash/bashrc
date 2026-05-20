@@ -78,3 +78,19 @@ bind 'set show-all-if-ambiguous on'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+gacp() {
+    if [[ $# -eq 0 ]]; then
+        echo "Plz write commit message"
+        return 1
+    fi
+
+    cd ~/minimal-dotfiles/ || return 1
+    git add .
+
+    if git commit -m "$*"; then
+        git push
+    fi
+
+    cd ~
+}
