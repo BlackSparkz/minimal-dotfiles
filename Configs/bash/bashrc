@@ -110,7 +110,6 @@ clean() {
     yay -Yc --noconfirm
 
     echo "Cleaning package cache..."
-    sudo paccache -rk2
     sudo rm -rf /var/cache/pacman/pkg/download-*/
 
     echo "Removing yay cache..."
@@ -120,4 +119,20 @@ clean() {
     sudo journalctl --vacuum-time=7d
 
     echo "Cleanup done"
+}
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
+
+cd() {
+    if [[ $# -gt 0 ]]; then
+        builtin cd "$@" && ls
+    else
+        builtin cd
+    fi
 }
